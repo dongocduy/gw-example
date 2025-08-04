@@ -1,0 +1,88 @@
+{
+    "endpoint": "/open-console/health-check",
+    "method": "GET",
+    {{ include "endpoints/input_query_strings.tmpl" }},
+    {{ include "endpoints/input_headers.tmpl" }},
+    "output_encoding": "no-op",
+    "backend": [
+        {
+            "url_pattern": "/health-check",
+            "method": "GET",
+            "extra_config": {
+                {{ include "endpoints/backends/rate_limit_backend.tmpl" }}
+            },
+            "host": [
+                "{{ .env.backend_hosts.host_open_console }}"
+            ]
+        }
+    ],
+    "extra_config": {
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
+    }
+},
+{
+    "endpoint": "/open-console/api/v1/client/login",
+    "method": "POST",
+    {{ include "endpoints/input_query_strings.tmpl" }},
+    {{ include "endpoints/input_headers.tmpl" }},
+    "output_encoding": "no-op",
+    "backend": [
+        {
+            "url_pattern": "/api/v1/client/login",
+            "method": "POST",
+            "extra_config": {
+                {{ include "endpoints/backends/rate_limit_backend.tmpl" }}
+            },
+            "host": [
+                "{{ .env.backend_hosts.host_open_console }}"
+            ]
+        }
+    ],
+    "extra_config": {
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
+    }
+},
+{
+    "endpoint": "/open-console/api/v1/client/refresh-token",
+    "method": "POST",
+    {{ include "endpoints/input_query_strings.tmpl" }},
+    {{ include "endpoints/input_headers.tmpl" }},
+    "output_encoding": "no-op",
+    "backend": [
+        {
+            "url_pattern": "/api/v1/client/auth/refresh-token",
+            "method": "POST",
+            "extra_config": {
+                {{ include "endpoints/backends/rate_limit_backend.tmpl" }}
+            },
+            "host": [
+                "{{ .env.backend_hosts.host_open_console }}"
+            ]
+        }
+    ],
+    "extra_config": {
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
+    }
+},
+{
+    "endpoint": "/open-console/api/v1/client/register",
+    "method": "POST",
+    {{ include "endpoints/input_query_strings.tmpl" }},
+    {{ include "endpoints/input_headers.tmpl" }},
+    "output_encoding": "no-op",
+    "backend": [
+        {
+            "url_pattern": "/api/v1/client/sign-up",
+            "method": "POST",
+            "extra_config": {
+                {{ include "endpoints/backends/rate_limit_backend.tmpl" }}
+            },
+            "host": [
+                "{{ .env.backend_hosts.host_open_console }}"
+            ]
+        }
+    ],
+    "extra_config": {
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
+    }
+}

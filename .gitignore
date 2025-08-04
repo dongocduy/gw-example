@@ -1,0 +1,7 @@
+krakend.json
+node_modules/
+.vscode/
+.DS_Store
+/vendor
+.idea
+.idea/

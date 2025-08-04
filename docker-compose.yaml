@@ -1,0 +1,14 @@
+version: "3"
+services:
+  krakend_ce_watch:
+    #The :watch image restarts the service automatically when the configuration files change.
+    #Do not use this image in production, it's meant to speed up your testing and development.
+    image: devopsfaith/krakend:watch
+    volumes:
+      - .:/etc/krakend
+    ports:
+      - "7234:1234"
+      - "7070:8080"
+    environment:
+      - SERVICE_NAME=Happy Gateway
+    command: ["run", "-d", "-c", "/etc/krakend/krakend.json"]

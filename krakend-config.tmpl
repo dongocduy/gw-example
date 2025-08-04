@@ -1,0 +1,18 @@
+{
+   "$schema": "https://www.krakend.io/schema/v3.json",
+   "version": 3,
+   "name": "{{ env "SERVICE_NAME" }}-{{ .env.name }}",
+   "port": {{ .env.global.port }},
+   "timeout": {{ .env.global.time_out }},
+   "cache_ttl": {{ .env.global.cache_ttl }},
+   "extra_config": {
+      {{template "securities.tmpl" . }},
+      {{template "telemetries.tmpl" . }},
+      "router": {
+         "hide_version_header": true
+      }
+   },
+   "endpoints": [
+      {{ template "endpoints.tmpl" . }}
+   ]
+}

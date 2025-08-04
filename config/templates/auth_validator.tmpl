@@ -1,0 +1,10 @@
+"alg": "RS256",
+"cache": true,
+"disable_jwk_security": true,
+"jwk_url": "{{ .env.validate_token.jwk }}",
+"propagate_claims": [
+    ["seller_id", "x-user-id"],
+    ["shop_id", "x-shop-id"],
+    ["email", "x-email-id"],
+    ["shop_amaze_id", "x-shop-amaze-id"]
+]
