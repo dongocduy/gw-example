@@ -1,0 +1,25 @@
+ "telemetry/opentelemetry": {
+    "service_name": "{{ .env.opentelemetry.service_name }}",
+    "metric_reporting_period": 1,
+    "trace_sample_rate": 0.15,
+    "exporters": {
+        "otlp": [
+            {
+                "name": "platform-tempo",
+                "host": "{{ .env.opentelemetry.host }}",
+                "port": {{ .env.opentelemetry.port }},
+                "use_http": false,
+                "disable_metrics": true
+            }
+        ],
+         "prometheus": [
+            {
+                "name": "dev_prometheus",
+                "port": 9090,
+                "process_metrics": true,
+                "go_metrics": true
+            }
+        ]
+    }
+}
+
