@@ -21,15 +21,13 @@
             }
         ]
     },
-    "layers": {
-            "router": {
-                "attributes": {
-                    "user.email": { "from_header": "X-Email-Id" }
-                },
-                "labels": {
-                    "email_id": { "from_header": "X-Email-Id" }
-                }
-            }
+    "extra_metrics": [
+        {
+            "name": "http_requests_by_email",
+            "type": "counter",
+            "help": "Total number of http requests by user email",
+            "labels": ["email_id", "path", "method", "status_code"]
         }
+    ]
 }
 

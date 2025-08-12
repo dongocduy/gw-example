@@ -17,6 +17,10 @@
         }
     ],
     "extra_config": {
-        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }},
+        "modifier/lua-response": {
+            "sources": [ "/etc/krakend/plugins/lua/metrics_decorator.lua" ],
+            "post": "response_decorator"
+        }
     }
 }
