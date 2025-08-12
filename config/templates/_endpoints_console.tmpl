@@ -8,8 +8,8 @@
         {
             "url_pattern": "/health-check",
             "method": "GET",
-            "extra_config": {
-                {{ include "endpoints/backends/rate_limit_backend.tmpl" }}
+             "extra_config": {
+                {{ include "endpoints/backend/rate_limit_backend.tmpl" }}
             },
             "host": [
                 "{{ .env.backend_hosts.host_open_console }}"
@@ -17,17 +17,6 @@
         }
     ],
     "extra_config": {
-        {{ include "endpoints/rate_limit_endpoint.tmpl" }},
-        "telemetry/opentelemetry": {
-            "layers": {
-                "router": {
-                    "attributes": {
-                        "user.email": {
-                            "from_header": "X-Email-Id"
-                        }
-                    }
-                }
-            }
-        }
+        {{ include "endpoints/rate_limit_endpoint.tmpl" }}
     }
 }

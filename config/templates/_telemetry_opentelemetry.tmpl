@@ -20,6 +20,16 @@
                 "go_metrics": true
             }
         ]
-    }
+    },
+    "layers": {
+            "router": {
+                "attributes": {
+                    "user.email": { "from_header": "X-Email-Id" }
+                },
+                "labels": {
+                    "email_id": { "from_header": "X-Email-Id" }
+                }
+            }
+        }
 }
 

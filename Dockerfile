@@ -1,4 +1,4 @@
-FROM devopsfaith/krakend:2.9 as builder
+FROM krakend:2.10.2 as builder
 
 ARG ENV=dev
 
@@ -20,6 +20,6 @@ RUN FC_ENABLE=1 \
 
 RUN krakend check -c /tmp/krakend.json --lint
 
-FROM devopsfaith/krakend:2.9
+FROM krakend:2.10.2
 # MOVE file from tmp/ to /etc/krakend
 COPY --from=builder --chown=krakend:nogroup /tmp/krakend.json .
